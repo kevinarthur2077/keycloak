@@ -159,13 +159,13 @@ public abstract class AuthorizationEndpointBase {
     }
 
     protected void checkSsl() {
-        logger.infof("session '%s'", session);
-        logger.infof("session.getContext() '%s'", session.getContext());
-        logger.infof("session.getContext().getUri() '%s'", session.getContext().getUri());
-        logger.infof("session.getContext().getUri().getBaseUri() '%s'", session.getContext().getUri().getBaseUri());
-        logger.infof("session.getContext().getUri().getBaseUri().getScheme() '%s'", session.getContext().getUri().getBaseUri().getScheme());
-        logger.infof("realm.getSslRequired() '%s'", realm.getSslRequired());
-        logger.infof("realm.getSslRequired().isRequired(clientConnection) '%s'", realm.getSslRequired().isRequired(clientConnection));
+        logger.debugf("session '%s'", session);
+        logger.debugf("session.getContext() '%s'", session.getContext());
+        logger.debugf("session.getContext().getUri() '%s'", session.getContext().getUri());
+        logger.debugf("session.getContext().getUri().getBaseUri() '%s'", session.getContext().getUri().getBaseUri());
+        logger.debugf("session.getContext().getUri().getBaseUri().getScheme() '%s'", session.getContext().getUri().getBaseUri().getScheme());
+        logger.debugf("realm.getSslRequired() '%s'", realm.getSslRequired());
+        logger.debugf("realm.getSslRequired().isRequired(clientConnection) '%s'", realm.getSslRequired().isRequired(clientConnection));
         if (!session.getContext().getUri().getBaseUri().getScheme().equals("https") && realm.getSslRequired().isRequired(clientConnection)) {
             event.error(Errors.SSL_REQUIRED);
             throw new ErrorPageException(session, Response.Status.BAD_REQUEST, Messages.HTTPS_REQUIRED);
